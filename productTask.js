@@ -33,11 +33,11 @@ app.get('/add-product', (req, res) => {
 app.post('/add-product', async (req, res) => {
     const { productId, productName, productCategory, productPrice, productStock } = req.body;
     const newProduct = {
-        productId: parseInt(productId),
+        productId,
         productName,
         productCategory,
-        productPrice: parseFloat(productPrice),
-        productStock: parseInt(productStock),
+        productPrice,
+        productStock,
     };
     
     const productCollection = await connectDB(); // Get the collection each time
@@ -45,7 +45,6 @@ app.post('/add-product', async (req, res) => {
     res.redirect('/');  // Redirect to the home page after inserting
 });
 
-// Start the server
 app.listen(5000, () => {
     console.log("Server is running on port number 5000");
 });
